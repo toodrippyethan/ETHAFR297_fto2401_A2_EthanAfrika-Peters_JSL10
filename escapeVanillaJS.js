@@ -20,15 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 🪲 Bug: Asynchronous function?
-    document.getElementById("solveRoom3").addEventListener("click", () => {
+    // Fixed Bug
+    //Added async
+    document.getElementById("solveRoom3").addEventListener("click",async () => {
         fetch('directions.json') 
             .then(response => response.json())
-            .then(directions => {
-                navigateLabyrinth(directions)
-                    .then(message => {
+            //Added async
+            .then(async directions => {
+                //Added await
+                await navigateLabyrinth(directions)
                         // 🪲 Bug: Incorrect method
-                        document.getElementById("room3Result").innerHTML = message;
-                    });
+                        document.getElementById("room3Result").innerHTML = "Congratulations! You've mastered the essentials of Vanilla JavaScript. Welcome to the world of React, where you'll build powerful and dynamic web applications. Let's dive in!";                        ;
             });
     });
 });
